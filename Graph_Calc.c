@@ -2,31 +2,26 @@
 #include <stdlib.h>
 #include <math.h>
 #include "calc.h"
+#include "parser.h"
 
-int main() {
+void main() {
+   char func[256];
+   unsigned char i;
+   double res = 0, x = 0;
    Func f;
-   double x;
-   //x ^ ( 2 + ( x / 3 ) ) - 27
-   f.items[0].type = 11;
-   f.items[1].type = 5;
-   f.items[2].type = 9;
-   f.items[3].type = 0;
-   f.items[3].value = 2.0;
-   f.items[4].type = 1;
-   f.items[5].type = 9;
-   f.items[6].type = 11;
-   f.items[7].type = 4;
-   f.items[8].type = 0;
-   f.items[8].value = 3;
-   f.items[9].type = 10;
-   f.items[10].type = 10;
-   f.items[11].type = 2;
-   f.items[12].type = 0;
-   f.items[12].value = 27;
-   f.len = 13;
-   printf("Enter x: ");
-   scanf("%lf", &x);
-   printf("Calc: ");
-   printf("%g\n", calc(f, x));
-   return 0;
+   initFunc(&f);
+   printf("Enter a function: ");
+   fgets(func, 256, stdin);
+   parse(func, &f);
+   i = 0;
+   while(f.items[i].type >= 0 || f.items[i+1].type >= 0) {
+      printf("f[%d].type = %d\n", i, f.items[i].type);
+      printf("f[%d].value = %f\n", i, f.items[i].value);
+      i++;
+   }
+   while(x != -1.0) {
+      printf("Enter x (if applicable): ");
+      scanf("%lf", &x);
+      printf("Result: %20g\n", calc(f, x));
+   }
 }
