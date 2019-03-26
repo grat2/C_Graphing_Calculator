@@ -50,7 +50,7 @@ double deriv(Func func, double x) {
    return res/0.0000000002;
 }
 
-void main() {
+/* void main() {
    char func[256];
    unsigned char i;
    int id = 0;
@@ -85,6 +85,5 @@ void main() {
          res = integ(f, l, r);
          printf("Result from (%f, %f): %f\n", l, r, res);
       }
-      
-   }
-}
+   } 
+} */
