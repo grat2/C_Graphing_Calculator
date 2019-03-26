@@ -3,6 +3,7 @@
 #include <math.h>
 #include "calc.h"
 #include "parser.h"
+#include "InteDeri.h"
 
 void main() {
    char func[256];
@@ -24,7 +25,7 @@ void main() {
       printf("Calculus (1/0)? ");
       scanf("%d", &calculus);
       if(calculus) {
-         printf("Integrate (1/0)?");
+         printf("Integrate (1/0)? ");
          scanf("%d", &integr);
          if(integr) {
             printf("Enter left bound: ");
@@ -32,7 +33,7 @@ void main() {
             printf("Enter right bound: ");
             scanf("%lf", &r);
             res = integ(f, l, r);
-            printf("Integration result (%f, %f): %f", l, r, res);
+            printf("Integration result (%f, %f): %f\n", l, r, res);
          }
          else {
 

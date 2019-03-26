@@ -1,15 +1,7 @@
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-#include "calc.h"
-
-double integ(Func func, double l, double u);
-double simpsons_rule(Func func, double l, double u);
-double recursive_asr(Func func, double l, double u, double whole, double error);
-
+#include "InteDeri.h"
 
 /* takes in function as an array of items, lower bound, and upper bound and
- * calculates integral using simpson's rule 
+ * calculates integral using simpson's rule
  */
 double integ(Func func, double l, double u) {
    return recursive_asr(func, l, u, simpsons_rule(func, l, u), 0.00000000001);
@@ -39,7 +31,7 @@ double recursive_asr(Func func, double l, double u, double whole, double error) 
    if(abs(left+right-whole) <= 15*error)
       return (left+right+(left+right-whole)/15);
    else
-      return recursive_asr(func, l, mid, left, error) + 
+      return recursive_asr(func, l, mid, left, error) +
          recursive_asr(func, mid, u, right, error);
 }
 
@@ -85,5 +77,5 @@ double deriv(Func func, double x) {
          res = integ(f, l, r);
          printf("Result from (%f, %f): %f\n", l, r, res);
       }
-   } 
+   }
 } */
