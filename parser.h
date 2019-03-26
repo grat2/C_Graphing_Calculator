@@ -6,6 +6,6 @@
 #include <stdio.h>
 #include "calc.h"
 
-void parse(char *s, Func *f)
+void parse(char *s, Func *f);
 
 #endif
